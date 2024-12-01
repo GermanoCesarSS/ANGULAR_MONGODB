@@ -2,8 +2,8 @@
 
 <h2>Cadastrar Aluno</h2>
 <form (ngSubmit)="salvar()">
-  <!-- <label for="codaluno">Código do Aluno:</label>
-  <input id="codaluno" [(ngModel)]="aluno.codaluno" name="codaluno" required /> -->
+  <label for="codaluno">Código do Aluno:</label>
+  <input id="codaluno" [(ngModel)]="aluno.codaluno" name="codaluno" required />
 
   <label for="nomealuno">Nome do Aluno:</label>
   <input id="nomealuno" [(ngModel)]="aluno.nomealuno" name="nomealuno" required />
@@ -43,6 +43,53 @@
       {{ curso.nome }}
     </option>
   </select>
+
+  <h3>Disciplinas</h3>
+  <button type="button" (click)="adicionarDisciplina()">Adicionar Disciplina</button>
+
+  <div *ngFor="let disciplina of aluno.disciplinas; let i = index">
+    <h4>Disciplina {{ i + 1 }}</h4>
+    <label for="disciplina">Disciplina:</label>
+    <select
+      id="disciplina"
+      [(ngModel)]="disciplina.disciplina_id"
+      name="disciplina_id_{{i}}"
+      required
+    >
+      <option value="" disabled selected>Selecione a disciplina</option>
+      <option *ngFor="let disc of disciplinasDisponiveis" [value]="disc._id">
+        {{ disc.nome }}
+      </option>
+    </select>
+
+    <label for="notas_bimestre1">Nota Bimestre 1:</label>
+    <input
+      id="notas_bimestre1"
+      type="number"
+      [(ngModel)]="disciplina.notas.bimestre1"
+      name="notas_bimestre1_{{i}}"
+      required
+      min="0"
+      max="10"
+      step="0.1"
+    />
+
+    <label for="notas_bimestre2">Nota Bimestre 2:</label>
+    <input
+      id="notas_bimestre2"
+      type="number"
+      [(ngModel)]="disciplina.notas.bimestre2"
+      name="notas_bimestre2_{{i}}"
+      required
+      min="0"
+      max="10"
+      step="0.1"
+    />
+
+    <!-- Adicione mais campos para outros bimestres conforme necessário -->
+
+    <button type="button" (click)="removerDisciplina(i)">Remover Disciplina</button>
+  </div>
 
   <button type="submit">Salvar</button>
 </form>
