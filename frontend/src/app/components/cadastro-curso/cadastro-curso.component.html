@@ -1,0 +1,32 @@
+<h2>Cadastrar Curso</h2>
+<form (ngSubmit)="salvar()">
+  <label for="nome">Nome:</label>
+  <input id="nome" [(ngModel)]="curso.nome" name="nome" required />
+
+  <label for="descricao">Descrição:</label>
+  <textarea id="descricao" [(ngModel)]="curso.descricao" name="descricao" required></textarea>
+
+  <label for="cargaHorariaTotal">Carga Horária Total:</label>
+  <input
+    id="cargaHorariaTotal"
+    type="number"
+    [(ngModel)]="curso.carga_horaria_total"
+    name="cargaHorariaTotal"
+    required
+  />
+
+  <label for="disciplinas">Disciplinas:</label>
+  <select
+    id="disciplinas"
+    multiple
+    [(ngModel)]="curso.disciplinas" 
+    name="disciplinas"
+    required
+  >
+    <option *ngFor="let disciplina of disciplinasDisponiveis" [value]="disciplina._id">
+      {{ disciplina.nome }}
+    </option>
+  </select>
+
+  <button type="submit">Salvar</button>
+</form>

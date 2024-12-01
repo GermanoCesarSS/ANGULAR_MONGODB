@@ -1,0 +1,12 @@
+<!-- src/app/components/cadastro-professor/cadastro-professor.component.html -->
+
+<h2>Cadastrar Professor</h2>
+<form (ngSubmit)="salvar()">
+  <label for="nome">Nome:</label>
+  <input id="nome" [(ngModel)]="professor.nome" name="nome" required />
+
+  <label for="semestre">Semestre:</label>
+  <input id="semestre" [(ngModel)]="professor.semestre" name="semestre" required />
+
+  <button type="submit">Salvar</button>
+</form>

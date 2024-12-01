@@ -1,18 +1,48 @@
-<router-outlet>
-        <h2>Cadastrar Aluno</h2>
-        <form (ngSubmit)="salvar()">
-                <label for="codaluno">Código:</label>
-                <input id="codaluno" [(ngModel)]="aluno.codaluno" name="codaluno" required />
+<!-- src/app/components/cadastro-aluno/cadastro-aluno.component.html -->
 
-                <label for="nomealuno">Nome:</label>
-                <input id="nomealuno" [(ngModel)]="aluno.nomealuno" name="nomealuno" required />
+<h2>Cadastrar Aluno</h2>
+<form (ngSubmit)="salvar()">
+  <!-- <label for="codaluno">Código do Aluno:</label>
+  <input id="codaluno" [(ngModel)]="aluno.codaluno" name="codaluno" required /> -->
 
-                <label for="curso">Curso:</label>
-                <input id="curso" [(ngModel)]="aluno.curso" name="curso" required />
+  <label for="nomealuno">Nome do Aluno:</label>
+  <input id="nomealuno" [(ngModel)]="aluno.nomealuno" name="nomealuno" required />
 
-                <label for="sexo">Sexo:</label>
-                <input id="sexo" [(ngModel)]="aluno.sexo" name="sexo" required />
+  <label for="dataNascimento">Data de Nascimento:</label>
+  <input
+    id="dataNascimento"
+    type="date"
+    [(ngModel)]="aluno.data_nascimento"
+    name="dataNascimento"
+    required
+  />
 
-                <button type="submit">Salvar</button>
-        </form>
-</router-outlet>
+  <label for="email">Email:</label>
+  <input id="email" type="email" [(ngModel)]="aluno.email" name="email" required />
+
+  <label for="senha">Senha:</label>
+  <input id="senha" type="password" [(ngModel)]="aluno.senha" name="senha" required />
+
+  <label for="sexo">Sexo:</label>
+  <select id="sexo" [(ngModel)]="aluno.sexo" name="sexo" required>
+    <option value="" disabled selected>Selecione o sexo</option>
+    <option value="Masculino">Masculino</option>
+    <option value="Feminino">Feminino</option>
+    <option value="Outro">Outro</option>
+  </select>
+
+  <label for="curso">Cursos:</label>
+  <select
+    id="curso"
+    multiple
+    [(ngModel)]="aluno.curso"
+    name="curso"
+    required
+  >
+    <option *ngFor="let curso of cursosDisponiveis" [value]="curso._id">
+      {{ curso.nome }}
+    </option>
+  </select>
+
+  <button type="submit">Salvar</button>
+</form>

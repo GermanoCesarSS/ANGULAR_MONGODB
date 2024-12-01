@@ -3,11 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Aluno {
-_id?: string;
-codaluno: string;
-nomealuno: string;
-curso: string;
-sexo: string;
+    _id?: string;
+    codaluno: string;
+    nomealuno: string;
+    data_nascimento: Date;
+    email: string;
+    senha: string;
+    sexo: string;
+    curso: string[]; // IDs dos cursos associados
 }
 
 @Injectable({

@@ -1,0 +1,35 @@
+<router-outlet>
+        <h2>Cadastrar Disciplina</h2>
+        <form (ngSubmit)="salvar()">
+          <label for="nome">Nome:</label>
+          <input id="nome" [(ngModel)]="disciplina.nome" name="nome" required />
+      
+          <label for="ementa">Ementa:</label>
+          <textarea id="ementa" [(ngModel)]="disciplina.ementa" name="ementa" required></textarea>
+      
+          <label for="cargaHoraria">Carga Horária:</label>
+          <input
+            id="cargaHoraria"
+            type="number"
+            [(ngModel)]="disciplina.carga_horaria"
+            name="cargaHoraria"
+            required
+          />
+      
+          <label for="professores">Professores:</label>
+          <select
+            id="professores"
+            multiple
+            [(ngModel)]="disciplina.professores"
+            name="professores"
+            required
+          >
+            <option *ngFor="let professor of professoresDisponiveis" [value]="professor._id">
+              {{ professor.nome }}
+            </option>
+          </select>
+      
+          <button type="submit">Salvar</button>
+        </form>
+      </router-outlet>
+      
